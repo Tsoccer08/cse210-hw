@@ -6,15 +6,16 @@ namespace Sandbox
     {
         public static void Main()
         {
-            int x = 5;
-            Console.WriteLine("Value of x is" + x);
-            Console.Write("What is your favorite color? ");
-            string color = Console.ReadLine();
-            Console.WriteLine($"{color}")
-            
+            Console.WriteLine("Unit Converter Calculator\n");
+            Console.Write("Enter Inches to convert to Centimeters- ");
+            string answer = Console.ReadLine();
+            double inches = double.Parse(answer);
+            double centimeters = inches * 2.54;
+            Console.WriteLine($"there are {centimeters} centimeters");
         }
     }
 }
 
-// comment //
+// comment, don't need one at end.
 /* comment */
+// to comment out many lines, select them, then do ctrl + /.
