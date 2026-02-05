@@ -1,7 +1,7 @@
-using System;
-using System.Reflection.Metadata;
-namespace Sandbox
-{
+// using System;
+// using System.Reflection.Metadata;
+// namespace Sandbox
+
     // string name = "";
 
     // void DisplayMessage(string name)
@@ -95,27 +95,28 @@ namespace Sandbox
     //     Console.WriteLine($"{number * i}");
     // }
 
-    public class Program
-    {
-        public static void Main()
-        {
-            // Console.WriteLine("Hello World!");
+    // public class Program
+    // {
+    //     public static void Main()
+    //     {
+    //         // Console.WriteLine("Hello World!");
 
-            // Counter myCounter = new Counter();
-            // myCounter.Run();
+    //         // Counter myCounter = new Counter();
+    //         // myCounter.Run();
 
-            Message m1 = new Message();
-            m1._message = "Send help!";
-            m1._priority = 1;
+    //         Message m1 = new Message();
+    //         m1._message = "Send help!";
+    //         m1._priority = 1;
 
-            Message m2 = new Message();
-            m2._message = "Please pick up some carrots at the store.";
-            m2._priority = 3;
+    //         Message m2 = new Message();
+    //         m2._message = "Please pick up some carrots at the store.";
+    //         m2._priority = 3;
             
-            Console.WriteLine(m2.GetMessage());
-            Console.WriteLine(m1.GetMessage());
+    //         Console.WriteLine(m2.GetMessage());
+    //         Console.WriteLine(m1.GetMessage());
 
             
-        }
-    }
-}
+    //     }
+    // }
+// }
+
