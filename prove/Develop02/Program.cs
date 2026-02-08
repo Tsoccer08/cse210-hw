@@ -4,13 +4,17 @@ class Program
 {
     static void Main()
     {
+        // Create a new journal instance
         Journal journal = new Journal();
+
         bool running = true;
 
         Console.WriteLine("Welcome to the Journal Program!");
 
+        // Main program loop
         while (running)
         {
+            // Display menu options
             Console.WriteLine("\nPlease select one of the following choices:");
             Console.WriteLine("1. Write");
             Console.WriteLine("2. Display");
@@ -21,23 +25,29 @@ class Program
 
             string choice = Console.ReadLine();
 
+            // Handle menu selection
             switch (choice)
             {
                 case "1":
                     journal.AddEntry();
                     break;
+
                 case "2":
                     journal.Display();
                     break;
+
                 case "3":
                     journal.Load();
                     break;
+
                 case "4":
                     journal.Save();
                     break;
+
                 case "5":
                     running = false;
                     break;
+
                 default:
                     Console.WriteLine("Invalid option.");
                     break;
