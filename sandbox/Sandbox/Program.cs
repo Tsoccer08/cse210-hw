@@ -99,10 +99,10 @@
     // {
     //     public static void Main()
     //     {
-    //         // Console.WriteLine("Hello World!");
+    //         Console.WriteLine("Hello World!");
 
-    //         // Counter myCounter = new Counter();
-    //         // myCounter.Run();
+    //         Counter myCounter = new Counter();
+    //         myCounter.Run();
 
     //         Message m1 = new Message();
     //         m1._message = "Send help!";

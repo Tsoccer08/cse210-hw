@@ -31,7 +31,7 @@ public class JournalEntry
     }
 
     // Creates a JournalEntry object from a line in a file
-    public static JournalEntry FromFileString(string line)
+    public JournalEntry FromFileString(string line)
     {
         string[] parts = line.Split("|");
         return new JournalEntry(parts[0], parts[1], parts[2], parts[3]);
