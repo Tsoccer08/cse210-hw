@@ -1,25 +1,34 @@
-public class Order
-{
-    private List<FoodItem> _items = new List<FoodItem>();
-    private Customer _customer;
-    private Waiter _waiter;
-    private DateTime _orderTime;
-    private string _status;
-    private int _tableNumber;
+using System;
+using System.Collections.Generic;
 
-    public Order(Customer customer, Waiter waiter, int tableNumber)
+// Order class to store items
+class Order
+{
+    private List<FoodItem> _items;
+
+    public Order()
     {
-        _customer = customer;
-        _waiter = waiter;
-        _tableNumber = tableNumber;
-        _orderTime = DateTime.Now;
-        _status = "Pending";
+        _items = new List<FoodItem>();
     }
 
-    public void AddItem(FoodItem item) => _items.Add(item);
-    public void RemoveItem(FoodItem item) => _items.Remove(item);
-    public double CalculateTotal() => 0; // placeholder
-    public string PrintReceipt() => "Receipt placeholder";
-    public void SetStatus(string status) => _status = status;
-    public List<FoodItem> GetItems() => _items;
+    // Add an item
+    public void AddItem(FoodItem item)
+    {
+        if (item != null)
+            _items.Add(item);
+    }
+
+    // Print the full receipt
+    public string PrintReceipt()
+    {
+        double total = 0;
+        string receipt = "";
+        foreach (FoodItem item in _items)
+        {
+            receipt += item.PrintItem() + "\n";
+            total += item.GetPrice();
+        }
+        receipt += $"Total: ${total:F2}";
+        return receipt;
+    }
 }

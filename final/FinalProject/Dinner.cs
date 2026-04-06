@@ -1,17 +1,17 @@
-public class Dinner : FoodItem
+// Dinner
+class Dinner : FoodItem
 {
-    private bool _hasSide;
     private bool _isSpicy;
+    private bool _containsNuts;
 
-    public Dinner(string name, double basePrice, bool hasSide, bool isSpicy)
-        : base(name, basePrice)
+    public Dinner(string name, double price, bool isVegetarian, bool containsNuts)
+        : base(name, price, isVegetarian, false)
     {
-        _hasSide = hasSide;
-        _isSpicy = isSpicy;
+        _containsNuts = containsNuts;
     }
 
-    public override double CalculatePrice() => _basePrice;
-    public override string GetDescription() => _name;
-    public void AddSide() { }
-    public void RemoveSide() { }
+    public override string PrintItem()
+    {
+        return $"{_name} - ${_price:F2}" + (_containsNuts ? " (Contains nuts)" : "");
+    }
 }

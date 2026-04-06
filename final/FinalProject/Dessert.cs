@@ -1,17 +1,16 @@
-public class Dessert : FoodItem
+// Dessert
+class Dessert : FoodItem
 {
-    private bool _hasTopping;
     private string _flavor;
 
-    public Dessert(string name, double basePrice, bool hasTopping, string flavor)
-        : base(name, basePrice)
+    public Dessert(string name, double price, bool isVegetarian, string flavor)
+        : base(name, price, isVegetarian, false)
     {
-        _hasTopping = hasTopping;
         _flavor = flavor;
     }
 
-    public override double CalculatePrice() => _basePrice;
-    public override string GetDescription() => _name;
-    public void AddTopping() { }
-    public void RemoveTopping() { }
+    public override string PrintItem()
+    {
+        return $"{_name} - { _flavor} - ${_price:F2}";
+    }
 }

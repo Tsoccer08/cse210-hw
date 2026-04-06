@@ -1,19 +1,28 @@
-public abstract class FoodItem
+using System;
+
+// Base class for any food item
+class FoodItem
 {
     protected string _name;
-    protected double _basePrice;
-    protected List<string> _ingredients = new List<string>();
-    protected int _prepTime;
+    protected double _price;
+    protected bool _isVegetarian;
+    protected bool _isGlutenFree;
 
-    public FoodItem(string name, double basePrice)
+    public FoodItem(string name, double price, bool isVegetarian, bool isGlutenFree)
     {
         _name = name;
-        _basePrice = basePrice;
+        _price = Math.Round(price, 2); // Ensure 2 decimals
+        _isVegetarian = isVegetarian;
+        _isGlutenFree = isGlutenFree;
     }
 
-    public abstract double CalculatePrice();
-    public abstract string GetDescription();
+    public string GetName() { return _name; }
+    public double GetPrice() { return _price; }
+    public bool GetVegetarian() { return _isVegetarian; }
+    public bool GetGlutenFree() { return _isGlutenFree; }
 
-    public void AddIngredient(string ingredient) => _ingredients.Add(ingredient);
-    public void RemoveIngredient(string ingredient) => _ingredients.Remove(ingredient);
+    public virtual string PrintItem()
+    {
+        return $"{_name} - ${_price:F2}";
+    }
 }

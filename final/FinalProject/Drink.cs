@@ -1,17 +1,18 @@
-public class Drink : FoodItem
+// Drink
+class Drink : FoodItem
 {
     private string _size;
-    private bool _hasIce;
+    private bool _isCold;
 
-    public Drink(string name, double basePrice, string size, bool hasIce)
-        : base(name, basePrice)
+    public Drink(string name, double price, string size, bool isCold)
+        : base(name, price, false, false)
     {
         _size = size;
-        _hasIce = hasIce;
+        _isCold = isCold;
     }
 
-    public override double CalculatePrice() => _basePrice;
-    public override string GetDescription() => _name;
-    public void ChangeSize(string size) { _size = size; }
-    public void ToggleIce() { _hasIce = !_hasIce; }
+    public override string PrintItem()
+    {
+        return $"{_name} ({_size}) - ${_price:F2}";
+    }
 }
