@@ -1,18 +1,20 @@
-// Drink
+// Represents a drink menu item.
 class Drink : FoodItem
 {
-    private string _size;
-    private bool _isCold;
+	private readonly string _size;
+	private readonly bool _isCold;
 
-    public Drink(string name, double price, string size, bool isCold)
-        : base(name, price, false, false)
-    {
-        _size = size;
-        _isCold = isCold;
-    }
+	// Creates a new drink.
+	public Drink(string name, double price, string size, bool isCold)
+		: base(name, price, false, false)
+	{
+		_size = size;
+		_isCold = isCold;
+	}
 
-    public override string PrintItem()
-    {
-        return $"{_name} ({_size}) - ${_price:F2}";
-    }
+	// Returns the drink's information for the menu and receipt.
+	public override string PrintItem()
+	{
+		return $"{_name} ({_size}) - ${_price:F2}";
+	}
 }

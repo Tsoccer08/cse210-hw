@@ -1,10 +1,105 @@
 # Multi-Restaurant Dining Simulator
 
-## How to Run
-Follow the on-screen instructions:
-   - Enter your name.
-   - Select a restaurant by number.
-   - Choose dinner, drink, and dessert items from menus.
-   - All input prompts require a valid number choice; invalid entries will ask again.
+A C# console application that simulates a customer's experience at a restaurant. The program allows users to select from multiple restaurants, choose dinner, drinks, and desserts, place an order, and receive a final receipt.
 
-The program will display your receipt at the end.
+## Features
+
+- Choose from four different restaurants.
+- Each restaurant has its own menu.
+- Select a dinner, drink, and dessert.
+- Option to choose "None" for any menu category.
+- Randomly assigns a waiter to the customer.
+- Tracks the customer's order history.
+- Generates a receipt with item prices and the final total.
+- Validates user input to prevent invalid menu selections.
+- Uses inheritance and polymorphism for different types of people and food items.
+
+## Classes
+
+### Person
+
+The base class for people in the restaurant system. Stores information such as:
+
+- Name
+- ID
+- Age
+
+### Customer
+
+Inherits from `Person` and manages the customer's orders and order history.
+
+### Waiter
+
+Inherits from `Person` and handles customer interactions such as greetings, delivering orders, and saying goodbye.
+
+### FoodItem
+
+The base class for all food and drink items. Stores common information such as:
+
+- Name
+- Price
+- Vegetarian status
+- Gluten-free status
+
+### Dinner
+
+Inherits from `FoodItem` and represents dinner menu items. It also tracks whether an item contains nuts.
+
+### Drink
+
+Inherits from `FoodItem` and represents drinks with information about size and whether the drink is cold.
+
+### Dessert
+
+Inherits from `FoodItem` and represents desserts with a flavor.
+
+### Order
+
+Stores the food items selected by the customer and generates the final receipt.
+
+### Restaurant
+
+Manages a restaurant's menu and waiters. It also handles displaying menu options and selecting items.
+
+### Program
+
+Contains the main program logic, creates the restaurants, handles user input, and runs the dining simulation.
+
+## How to Run
+
+1. Clone or download the project.
+2. Open the project in a C# development environment such as Visual Studio or Visual Studio Code.
+3. Build and run the application.
+4. Follow the prompts in the console.
+
+The program will ask you to:
+
+1. Enter your name.
+2. Select a restaurant.
+3. Choose a dinner.
+4. Choose a drink.
+5. Choose a dessert.
+6. Review your receipt.
+
+## Example
+
+```text
+Welcome to our multi-restaurant dining simulator!
+
+Please enter your name: Dave
+
+Available Restaurants:
+1. Tasty Town
+2. Bistro Bliss
+3. Comfort Eats
+4. Fancy Feast
+
+Choose a restaurant by number: 1
+
+Menu options are then displayed for dinner, drinks, and dessert.
+
+Your receipt:
+Steak - $15.99
+Coke (Medium) - $1.99
+Cheesecake - Cheese - $4.99
+Total: $22.97

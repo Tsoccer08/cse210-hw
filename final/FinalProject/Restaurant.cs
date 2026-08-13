@@ -1,93 +1,105 @@
 using System;
 using System.Collections.Generic;
 
-// Restaurant class
+// Represents a restaurant with a menu and a team of waiters.
 class Restaurant
 {
-    private string _name;
-    private List<FoodItem> _menu;
-    private List<Waiter> _waiters;
+	private readonly string _name;
+	private readonly List<FoodItem> _menu;
+	private readonly List<Waiter> _waiters;
 
-    // Constructor
-    public Restaurant(string name)
-    {
-        _name = name;
-        _menu = new List<FoodItem>();
-        _waiters = new List<Waiter>()
-        {
-            new Waiter("Alice", 1, "Waiter"),
-            new Waiter("Bob", 2, "Waiter"),
-            new Waiter("Charlie", 3, "Waiter")
-        };
-    }
+	// Creates a new restaurant with a default team of waiters.
+	public Restaurant(string name)
+	{
+		_name = name;
+		_menu = new List<FoodItem>();
 
-    public string GetName()
-    {
-        return _name;
-    }
+		_waiters = new List<Waiter>
+		{
+			new Waiter("Alice", 1, "Waiter"),
+			new Waiter("Bob", 2, "Waiter"),
+			new Waiter("Charlie", 3, "Waiter")
+		};
+	}
 
-    // Add item to menu
-    public void AddMenuItem(FoodItem item)
-    {
-        _menu.Add(item);
-    }
+	// Returns the restaurant's name.
+	public string GetName()
+	{
+		return _name;
+	}
 
-    // Show all menu items
-    public void ShowMenu()
-    {
-        Console.WriteLine($"\nMenu for {_name}:");
-        foreach (var item in _menu)
-        {
-            Console.WriteLine(item.PrintItem());
-        }
-    }
+	// Adds a food item to the restaurant's menu.
+	public void AddMenuItem(FoodItem item)
+	{
+		if (item != null)
+		{
+			_menu.Add(item);
+		}
+	}
 
-    // Randomly assign a waiter
-    public Waiter AssignWaiter()
-    {
-        Random rand = new Random();
-        return _waiters[rand.Next(_waiters.Count)];
-    }
+	// Displays every item on the restaurant's menu.
+	public void ShowMenu()
+	{
+		Console.WriteLine($"\nMenu for {_name}:");
 
-    // Choose a menu item of a specific type (Dinner, Drink, Dessert) with 0 = none
-    public FoodItem ChooseItemWithNone(string type)
-    {
-        // Filter menu by type
-        List<FoodItem> filtered = _menu.FindAll(f => f.GetType().Name == type);
+		foreach (FoodItem item in _menu)
+		{
+			Console.WriteLine(item.PrintItem());
+		}
+	}
 
-        if (filtered.Count == 0)
-        {
-            Console.WriteLine("No items available.");
-            return null;
-        }
+	// Randomly assigns a waiter to the customer.
+	public Waiter AssignWaiter()
+	{
+		Random random = new Random();
+		return _waiters[random.Next(_waiters.Count)];
+	}
 
-        // Display items
-        for (int i = 0; i < filtered.Count; i++)
-        {
-            Console.WriteLine($"{i + 1}. {filtered[i].PrintItem()}");
-        }
-        Console.WriteLine("0. None");
+	// Displays menu items of a specific type and allows the customer
+	// to select an item or choose none.
+	public FoodItem ChooseItemWithNone(string type)
+	{
+		List<FoodItem> filteredItems = _menu.FindAll(
+			item => item.GetType().Name == type
+		);
 
-        int choice = -1;
-        while (true)
-        {
-            Console.Write("Enter choice: ");
-            string input = Console.ReadLine();
+		if (filteredItems.Count == 0)
+		{
+			Console.WriteLine("No items available.");
+			return null;
+		}
 
-            if (int.TryParse(input, out choice))
-            {
-                if (choice >= 0 && choice <= filtered.Count)
-                {
-                    break;
-                }
-            }
+		Console.WriteLine($"\nChoose a {type.ToLower()} from {_name}:");
 
-            Console.WriteLine("Invalid input. Try again.");
-        }
+		for (int i = 0; i < filteredItems.Count; i++)
+		{
+			Console.WriteLine($"{i + 1}. {filteredItems[i].PrintItem()}");
+		}
 
-        if (choice == 0)
-            return null;
+		Console.WriteLine("0. None");
 
-        return filtered[choice - 1];
-    }
+		int choice;
+
+		while (true)
+		{
+			Console.Write("Enter choice: ");
+			string input = Console.ReadLine();
+
+			if (int.TryParse(input, out choice) &&
+				choice >= 0 &&
+				choice <= filteredItems.Count)
+			{
+				break;
+			}
+
+			Console.WriteLine("Invalid input. Try again.");
+		}
+
+		if (choice == 0)
+		{
+			return null;
+		}
+
+		return filteredItems[choice - 1];
+	}
 }

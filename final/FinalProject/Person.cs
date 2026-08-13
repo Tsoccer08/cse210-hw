@@ -1,49 +1,48 @@
-using System;
-
-// Base class for any person in the restaurant system
+// Base class for people in the restaurant system.
 class Person
 {
-    // Fields
-    private string _name;
-    private int _id;
-    private int _age;
+	private string _name;
+	private int _id;
+	private int _age;
 
-    // Constructor
-    public Person(string name, int id, int age)
-    {
-        _name = name;
-        _id = id;
-        _age = age;
-    }
+	// Creates a new person.
+	public Person(string name, int id, int age)
+	{
+		_name = name;
+		_id = id;
+		_age = age;
+	}
 
-    // Getters and Setters
-    public string GetName()
-    {
-        return _name;
-    }
+	// Gets or sets the person's name.
+	public string GetName()
+	{
+		return _name;
+	}
 
-    public void SetName(string name)
-    {
-        _name = name;
-    }
+	public void SetName(string name)
+	{
+		_name = name;
+	}
 
-    public int GetId()
-    {
-        return _id;
-    }
+	// Gets or sets the person's ID.
+	public int GetId()
+	{
+		return _id;
+	}
 
-    public void SetId(int id)
-    {
-        _id = id;
-    }
+	public void SetId(int id)
+	{
+		_id = id;
+	}
 
-    public int GetAge()
-    {
-        return _age;
-    }
+	// Gets or sets the person's age.
+	public int GetAge()
+	{
+		return _age;
+	}
 
-    public void SetAge(int age)
-    {
-        _age = age;
-    }
+	public void SetAge(int age)
+	{
+		_age = age;
+	}
 }

@@ -1,34 +1,38 @@
-using System;
 using System.Collections.Generic;
 
-// Order class to store items
+// Represents a customer's order.
 class Order
 {
-    private List<FoodItem> _items;
+	private readonly List<FoodItem> _items;
 
-    public Order()
-    {
-        _items = new List<FoodItem>();
-    }
+	// Creates an empty order.
+	public Order()
+	{
+		_items = new List<FoodItem>();
+	}
 
-    // Add an item
-    public void AddItem(FoodItem item)
-    {
-        if (item != null)
-            _items.Add(item);
-    }
+	// Adds a food item to the order.
+	public void AddItem(FoodItem item)
+	{
+		if (item != null)
+		{
+			_items.Add(item);
+		}
+	}
 
-    // Print the full receipt
-    public string PrintReceipt()
-    {
-        double total = 0;
-        string receipt = "";
-        foreach (FoodItem item in _items)
-        {
-            receipt += item.PrintItem() + "\n";
-            total += item.GetPrice();
-        }
-        receipt += $"Total: ${total:F2}";
-        return receipt;
-    }
+	// Creates a receipt containing all ordered items and the total.
+	public string PrintReceipt()
+	{
+		double total = 0;
+		string receipt = "";
+
+		foreach (FoodItem item in _items)
+		{
+			receipt += item.PrintItem() + "\n";
+			total += item.GetPrice();
+		}
+
+		receipt += $"Total: ${total:F2}";
+		return receipt;
+	}
 }
